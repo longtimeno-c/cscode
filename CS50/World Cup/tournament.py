@@ -2,6 +2,7 @@
 
 import csv
 import sys
+import time
 import random
 
 # Number of simluations to run
@@ -9,14 +10,26 @@ N = 1000
 
 
 def main():
-
     # Ensure correct usage
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
 
     teams = []
-    # TODO: Read teams into memory from file
+    # Read teams into memory from file
+    filename = sys.argv[1]
+    with open(filename, "r") as file:
+        # Skip the header line
+        next(file)
+        # Read the content line by line
+        for line in file:
+            # Split each line by comma and strip whitespace
+            team_name, rating = line.strip().split(',')
+            # Append the team to the teams array
+            teams.append((team_name, int(rating)))
 
+    # Print the teams array for demonstration
+    print(teams)
+    
     counts = {}
     # TODO: Simulate N tournaments and keep track of win counts
 
