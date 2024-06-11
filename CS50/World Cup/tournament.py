@@ -1,6 +1,7 @@
 # Simulate a sports tournament
 
 import csv
+import itertools
 import sys
 import time
 import random
@@ -8,6 +9,12 @@ import random
 # Number of simluations to run
 N = 1000
 
+def generate_matchups(teams):
+    # Generate matchups by pairing each team with the next one in the list
+    matchups = []
+    for i in range(0, len(teams), 2):
+        matchups.append((teams[i], teams[i+1]))
+    return matchups
 
 def main():
     # Ensure correct usage
@@ -28,14 +35,26 @@ def main():
             teams.append((team_name, int(rating)))
 
     # Print the teams array for demonstration
+    print("Teams:")
     print(teams)
-    
+    time.sleep(2)  # Pause for 2 seconds for demonstration of team fetch from file
+    print("\n\n")
+
+    # Generate tournament bracket
+    # Generate matchups
+    matchups = generate_matchups(teams)
+
+    # Print the matchups for demonstration
+    print("Matchups:")
+    for i, match in enumerate(matchups):
+        print(f"Pair {i+1}: {match[0][0]} ({match[0][1]}) vs {match[1][0]} ({match[1][1]})")
+
     counts = {}
     # TODO: Simulate N tournaments and keep track of win counts
-
+    
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
-        print(f"{team}: {counts[team] * 100 / N:.1f}% chance of winning")
+        print(f"{team}: {counts[team] * 100 / N:.1f}% chance of winning")  # Fix N or replace with appropriate value
 
 
 def simulate_game(team1, team2):
