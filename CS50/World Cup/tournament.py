@@ -1,3 +1,6 @@
+# This will calulate teams and % scores of winning the tournament
+
+
 # Simulate a sports tournament
 
 import csv
