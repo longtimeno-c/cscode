@@ -4,7 +4,7 @@ Computer Science Programming tasks.
 This will be a dedicated libary for my computer science class code. 
 
 ## Misc 
-Misc contains smaller tasks 
+Misc contains smaller tasks from both lessons and co-curricular.
 
 
 ## CS50
