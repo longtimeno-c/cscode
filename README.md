@@ -9,8 +9,11 @@ Misc contains smaller tasks
 
 ## CS50
 Contains a Libray of completed CS50 programs in Python:
+- Part 1 contains all tasks in task 1
+- Part 2 contains all tasks in task 2
+- Part 3 contains all tasks in task 3
+- Part 4 contains all tasks in task 4
 
-## Mario
 
 
 ### World Cup
