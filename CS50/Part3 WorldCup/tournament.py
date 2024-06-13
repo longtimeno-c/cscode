@@ -3,7 +3,6 @@
 
 # Simulate a sports tournament
 
-import csv
 import sys
 import time
 import random
