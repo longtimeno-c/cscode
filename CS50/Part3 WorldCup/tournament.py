@@ -1,13 +1,8 @@
-# This will calulate teams and % scores of winning the tournament
-
-
-# Simulate a sports tournament
-
 import sys
 import time
 import random
 
-# Number of simluations to run
+# Number of simulations to run
 N = 1000
 
 def generate_matchups(teams):
@@ -21,9 +16,21 @@ def simulate_tournament(matchups):
     # Simulate a single tournament
     winners = []
     for match in matchups:
-        # Simulate each match by randomly selecting a winner
-        winner = random.choice(match)
-        winners.append(winner)
+        team1, rating1 = match[0]
+        team2, rating2 = match[1]
+        
+        # Calculate probability of winning based on ratings
+        total_rating = rating1 + rating2
+        prob_team1 = rating1 / total_rating
+        prob_team2 = rating2 / total_rating
+        
+        # Simulate the match
+        rand_num = random.random()
+        if rand_num < prob_team1:
+            winners.append(team1)
+        else:
+            winners.append(team2)
+            
     return winners
 
 def main():
@@ -45,7 +52,7 @@ def main():
             teams.append((team_name, int(rating)))
 
     # Print the teams array for demo
-    print("Teams Arry:")
+    print("Teams Array:")
     print(teams)
     time.sleep(2)  # Pause for 2 seconds for demo of team fetch from file
     print("\n\n")
@@ -77,5 +84,5 @@ def main():
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
         print(f"{team}: {counts[team] * 100 / N:.1f}% chance of winning")
 
-
-main()
+if __name__ == "__main__":
+    main()
