@@ -22,3 +22,6 @@ To run the world cup file you need to enter the table name when running. You sho
 ```
 /usr/local/bin/python3 "/Users/tristanhill/Documents/git/cscode/CS50/Part3 WorldCup/tournament.py" "/Users/tristanhill/Documents/git/cscode/CS50/Part3 WorldCup/2018m.csv"
 ```
+
+## Revision Scripts:
+This contains scripts that need to be remebered for paper 4.
