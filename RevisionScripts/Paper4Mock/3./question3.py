@@ -29,7 +29,7 @@ def readData():
     arrayTreasure = []
 
     try:
-        with open("/workspaces/cscode/RevisionScripts/Paper4Mocks/3./TreasureChestData.txt", "r") as file:
+        with open("TreasureChestData.txt", "r") as file:
             while True:
                 # Read question
                 question = file.readline().strip()
