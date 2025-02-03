@@ -1,3 +1,9 @@
+import os
+
+# Ensure the working directory is the same as the script's directory
+os.chdir(os.path.dirname(__file__))  # Set the working directory to the script's location
+print("Updated Working Directory:", os.getcwd())
+
 class Tree:
     def __init__(self, TreeName, HeightGrowth, MaxHeight, MaxWidth, Evergreen):
         self.__TreeName = TreeName
@@ -25,13 +31,14 @@ class Tree:
 def ReadData():
     trees = []
     try:
+        print("Checking if Trees.txt exists:", os.path.exists('Trees.txt'))  # Debugging check
         with open('Trees.txt', 'r') as file:
             for line in file:
                 data = line.strip().split(',')
                 tree = Tree(data[0], int(data[1]), int(data[2]), int(data[3]), data[4])
                 trees.append(tree)
     except FileNotFoundError:
-        print("File not found.")
+        print("File not found. Make sure Trees.txt is in the same directory as this script.")
     return trees
 
 
@@ -76,4 +83,5 @@ def main():
         ChooseTree(trees)
 
 
-main()
+if __name__ == "__main__":
+    main()
