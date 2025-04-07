@@ -1,16 +1,43 @@
-# One source file is used to answer Question 1 and two source files are used to answer Question 3.
-# The files are called Data.txt, AnimalData.txt and ColourData.txt
-# A class declaration can be used to declare a record.
-# A list is an alternative to an array.
+def AskUserInput():
+    while True:
+        search = input('Enter number to search for: ')
+        if search.isdigit():
+            number = int(search)
+            if 0 <= number <= 100:
+                return number
+            else:
+                print('That is not a valid number!\nChoose a number between 0 and 100.')
+        else:
+            print('That is not a valid number!\nChoose a number between 0 and 100.')
 
-# 1 A program reads data from a file and searches for specific data.
-# (a) The main program needs to read 25 integer data items from the text file Data.txt into a
-# local 1D array, DataArray
+def PrintArray(DataArray):
+    print(DataArray) # Print array
 
-# (i) Write program code to declare the local array DataArray
+def Readfile():
+    DataArray = []
+    with open('Data.txt', 'r') as file: # Open the file
+        for line in file: # For every line in the file... for i in j
+            if line.strip().isdigit(): # Remove blank spaces, ensure only digits
+                DataArray.append(int(line.strip())) # Append integers to array
+                if len(DataArray) == 25: # Ensure only 25 values added
+                    break
+    return DataArray
 
-DataArray = []
+def LinearSearch(array, target):
+    positions = []
+    for index in range(len(array)):
+        if array[index] == target:
+            positions.append(index)
+    return positions
 
-with open('Data.txt', 'r') as file:
-    for line in file.readlines():
-        print(line)
+def main():
+    search = AskUserInput()
+    data = Readfile()
+    PrintArray(data)
+    occurences = LinearSearch(data, search)
+    if occurences:
+        print(f"Value {search} found at positions: {occurences}")
+        print(f"Total occurrences: {len(occurences)}")
+    else:
+        print(f"Value {search} not found in the array.")
+main()
